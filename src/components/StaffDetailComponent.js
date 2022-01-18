@@ -1,6 +1,7 @@
 import React from "react";
 import { CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import dateFormat from "dateformat";
 
 function RenderStaff({staff}){
     if(staff != null){
@@ -12,8 +13,8 @@ function RenderStaff({staff}){
                         </div>
                         <div className="col-9">                    
                             <CardTitle>Họ và tên: {staff.name}</CardTitle>
-                            <CardText>Ngày sinh: {staff.doB}</CardText>
-                            <CardText>Ngày vào công ty: {staff.startDate}</CardText>
+                            <CardText>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</CardText>
+                            <CardText>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</CardText>
                             <CardText>Phòng ban: {staff.department.name}</CardText>
                             <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
                             <CardText>Số ngày đã làm thêm: {staff.overTime}</CardText>
