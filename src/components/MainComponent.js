@@ -21,7 +21,15 @@ class Main extends Component {
 
   render() {
 
+    const addStaff = (newStaff) => {
+      this.setState({
+        staffs: [...this.state.staffs, newStaff]        
+      })
+      console.log('Staff o Main',newStaff )
 
+    }
+
+    
     const StaffWithId = ({match}) => {
       return(
         <StaffDetail
@@ -35,7 +43,7 @@ class Main extends Component {
         <Header />
         <Switch>
           <Route path="/staff/:staffId" component={StaffWithId} />
-          <Route path="/staff" component={() => <StaffList staffs={this.state.staffs} />} />
+          <Route path="/staff" component={() => <StaffList staffs={this.state.staffs} onAdd={addStaff}  />} />
           <Route path="/salary" component={() => <Salary staffs={this.state.staffs} />} />
           <Route path="/department" component={() => <Department departments={this.state.departments} />} />
           <Redirect to="/staff" />
